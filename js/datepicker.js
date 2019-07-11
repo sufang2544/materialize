@@ -265,6 +265,7 @@
         return '';
       }
 
+      // kan - ???
       let formatArray = format.split(/(d{1,4}|m{1,4}|y{4}|yy|!.)/g);
       let formattedDate = formatArray
         .map((label) => {
@@ -285,6 +286,7 @@
         return this.draw();
       }
       if (typeof date === 'string') {
+        // kan - need parse date - ???
         date = new Date(Date.parse(date));
       }
       if (!Datepicker._isDate(date)) {
@@ -323,7 +325,8 @@
       let day = i18n.weekdaysShort[displayDate.getDay()];
       let month = i18n.monthsShort[displayDate.getMonth()];
       let date = displayDate.getDate();
-      this.yearTextEl.innerHTML = displayDate.getFullYear();
+      // kan
+      this.yearTextEl.innerHTML = displayDate.getFullYear() + 543;
       this.dateTextEl.innerHTML = `${day}, ${month} ${date}`;
     }
 
@@ -606,7 +609,10 @@
 
       for (arr = []; i < j && i <= opts.maxYear; i++) {
         if (i >= opts.minYear) {
-          arr.push(`<option value="${i}" ${i === year ? 'selected="selected"' : ''}>${i}</option>`);
+          // kan
+          arr.push(
+            `<option value="${i}" ${i === year ? 'selected="selected"' : ''}>${i + 543}</option>`
+          );
         }
       }
 
@@ -788,7 +794,8 @@
           return ('' + this.date.getFullYear()).slice(2);
         },
         yyyy: () => {
-          return this.date.getFullYear();
+          // kan
+          return this.date.getFullYear() + 543;
         }
       };
     }
@@ -885,6 +892,7 @@
       if (e.firedBy === this) {
         return;
       }
+      // kan - ???
       if (this.options.parse) {
         date = this.options.parse(this.el.value, this.options.format);
       } else {
