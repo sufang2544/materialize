@@ -8883,7 +8883,13 @@ $jscomp.polyfill = function (e, r, p, m) {
       _this53._setupEventHandlers();
 
       if (!_this53.options.defaultDate) {
-        _this53.options.defaultDate = new Date(Date.parse(_this53.el.value));
+        // kan
+        // _this53.options.defaultDate = new Date(Date.parse(_this53.el.value));
+        if (_this53.options.parse) {
+          _this53.options.defaultDate = _this53.options.parse(_this53.el.value, _this53.options.format);
+        } else {
+          _this53.options.defaultDate = new Date(Date.parse(_this53.el.value));
+        }
       }
 
       var defDate = _this53.options.defaultDate;
